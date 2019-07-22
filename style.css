@@ -101,7 +101,7 @@ body {
   height: 0;
   overflow: hidden;
   box-sizing: border-box;
-  animation: showUserBox 1s 4s steps(8, end) forwards;
+  animation: showUserBox 1s 5s steps(8, end) forwards;
 }
 
 .user-info .content {
@@ -127,7 +127,7 @@ body {
   right: 0;
   display: flex;
   justify-content: space-between;
-  animation: showBottomBorder 1s 4s steps(8, end) forwards;
+  animation: showBottomBorder 1s 4s steps(19, end) forwards;
 }
 
 .user-info .left-border {
@@ -164,4 +164,57 @@ body {
 
 .name {
   font-size: 23px;
+}
+
+nav {
+  background: linear-gradient(to right, #e8cbc0, #636fa4);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 22px;
+  font-weight: 500;
+  height: 0;
+  animation: animation-gradient 5s infinite, showInfo 1s 4s steps(19, end) forwards;
+}
+
+nav .list {
+  display: flex;
+  align-items: center;
+}
+
+nav .list ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav .list ul li {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+nav .list ul li:hover {
+  font-weight: 700;
+}
+
+@keyframes animation-gradient {
+  0% {
+    background-position-x: 0%;
+  }
+  50% {
+    background-position-x: 160%;
+  }
+  100% {
+    background-position-x: 0%;
+  }
+}
+
+@keyframes showInfo {
+  to {
+    height: 100px;
+  }
 }

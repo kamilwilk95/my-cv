@@ -1,5 +1,6 @@
 $color: #f5f5f5;
 $user-info-height: 140px;
+$nav-height: 100px;
 
 body {
   background: #262722;
@@ -101,11 +102,10 @@ body {
 
 .user-info {
   position: relative;
-  // opacity: 0;
   height: 0;
   overflow: hidden;
   box-sizing: border-box;
-  animation: showUserBox 1s 4s steps(8, end) forwards;
+  animation: showUserBox 1s 5s steps(8, end) forwards;
 
   .content {
     width: 340px;
@@ -130,7 +130,7 @@ body {
     right: 0;
     display: flex;
     justify-content: space-between;
-    animation: showBottomBorder 1s 4s steps(8, end) forwards;
+    animation: showBottomBorder 1s 4s steps(19, end) forwards;
   }
 
   .left-border {
@@ -168,4 +168,57 @@ body {
 
 .name {
   font-size: 23px;
+}
+
+nav {
+  background: linear-gradient(to right, #e8cbc0, #636fa4);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 22px;
+  font-weight: 500;
+  height: 0;
+  animation:  animation-gradient 5s infinite, showInfo 1s 4s steps(19, end) forwards;
+
+  .list {
+    display: flex;
+    align-items: center;
+
+    ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0 12px;
+        cursor: pointer;
+
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+@keyframes animation-gradient {
+  0% {
+    background-position-x: 0%;
+  }
+  50% {
+    background-position-x: 160%;
+  }
+  100% {
+    background-position-x: 0%;
+  }
+}
+
+@keyframes showInfo {
+  to {
+    height: $nav-height;
+  }
 }
