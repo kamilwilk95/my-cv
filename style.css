@@ -294,7 +294,7 @@ h1 {
 
 .experience__wrapper .experience {
   transform: translateY(-100%);
-  animation: showExperience 2s 8s steps(13, end) forwards;
+  animation: showExperience 1s 8s steps(13, end) forwards;
 }
 
 .experience__wrapper .experience .experience__item {
@@ -317,7 +317,7 @@ h1 {
 
 .education__wrapper .education {
   transform: translateY(-100%);
-  animation: showEducation 2s 10s steps(13, end) forwards;
+  animation: showEducation 1s 9s steps(13, end) forwards;
 }
 
 .education__wrapper .education .education__item {

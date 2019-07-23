@@ -1,6 +1,5 @@
 $color: #f5f5f5;
 $user-info-height: 140px;
-$nav-height: 100px;
 
 html {
   scroll-behavior: smooth;
@@ -304,7 +303,7 @@ h1 {
 
   .experience {
     transform: translateY(-100%);
-    animation: showExperience 2s 8s steps(13, end) forwards;
+    animation: showExperience 1s 8s steps(13, end) forwards;
 
     .experience__item {
       padding-bottom: 20px;
@@ -327,7 +326,7 @@ h1 {
 
   .education {
     transform: translateY(-100%);
-    animation: showEducation 2s 10s steps(13, end) forwards;
+    animation: showEducation 1s 9s steps(13, end) forwards;
 
     .education__item {
       padding-bottom: 20px;
