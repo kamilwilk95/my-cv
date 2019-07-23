@@ -2,6 +2,10 @@ $color: #f5f5f5;
 $user-info-height: 140px;
 $nav-height: 100px;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #262722;
   font-family: 'Montserrat', sans-serif;
@@ -13,8 +17,21 @@ body {
   padding-left: 0;
 }
 
-.row {
-  display: flex;
+h1 {
+  margin-block-start: unset;
+  margin-block-end: unset;
+  margin-inline-start: unset;
+  margin-inline-end: unset;
+  padding: 10px 0;
+  font-size: 40px;
+  background: linear-gradient(to right, #e8cbc0, #636fa4);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:  animation-gradient 2s infinite;
 }
 
 .cursor {
@@ -31,10 +48,14 @@ body {
 }
 
 .typing__name {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  white-space: nowrap; /* Keeps the content on a single line */
+  overflow: hidden;
+  white-space: nowrap;
   animation: typing 3s step-end;
   padding-left: 5px;
+}
+
+.row {
+  display: flex;
 }
 
 @keyframes show {
@@ -100,63 +121,70 @@ body {
   padding: 20px 0;
 }
 
-.user-info {
-  position: relative;
-  height: 0;
+.info-wrapper {
   overflow: hidden;
-  box-sizing: border-box;
-  animation: showUserBox 1s 5s steps(8, end) forwards;
+  .info-animation-box {
+    transform: translateY(-100%);
+    animation: showUserBox 1s 5s steps(8, end) forwards;
 
-  .content {
-    width: 340px;
-    height: $user-info-height;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+    .user-info {
+      position: relative;
+      height: $user-info-height;
+      overflow: hidden;
+      box-sizing: border-box;
+      width: 340px;
 
-  .top-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-  }
+      .content {
+        padding: 20px;
+        box-sizing: border-box;
+        height: $user-info-height;
+      }
 
-  .bottom-border {
-    position: absolute;
-    bottom: -$user-info-height;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    animation: showBottomBorder 1s 4s steps(19, end) forwards;
-  }
+      .top-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+      }
 
-  .left-border {
-    position: absolute;
-    height: $user-info-height;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
+      .bottom-border {
+        position: absolute;
+        bottom: -$user-info-height;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        animation: showBottomBorder 1s 4s steps(19, end) forwards;
+      }
 
-  .right-border {
-    position: absolute;
-    height: $user-info-height;
-    top: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+      .left-border {
+        position: absolute;
+        height: $user-info-height;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+
+      .right-border {
+        position: absolute;
+        height: $user-info-height;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+    }
   }
 }
 
 @keyframes showUserBox {
   to {
-    height: $user-info-height;
+    transform: translateY(0);
   }
 }
 
@@ -169,77 +197,152 @@ body {
 .name {
   font-size: 23px;
 }
+.nav-wrapper {
+  overflow: hidden;
 
-nav {
-  background: linear-gradient(to right, #e8cbc0, #636fa4);
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  background-size: 200% 200%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 22px;
-  font-weight: 500;
-  // height: 0;
-  // animation:  animation-gradient 5s infinite, showInfo 1s 4s steps(19, end) forwards;
+  nav {
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 22px;
+    font-weight: 500;
+    transform: translateY(-100%);
+    animation:  animation-gradient 2s infinite, showInfo 1s 4s steps(19, end) forwards;
 
-  .top-border,
-  .bottom-border {
-    height: 33px;
-    overflow: hidden;
-    text-overflow: clip;
-    white-space: nowrap;
-  }
+    .top-border,
+    .bottom-border {
+      height: 33px;
+      overflow: hidden;
+      text-overflow: clip;
+      white-space: nowrap;
+    }
 
-  .list {
-    display: flex;
-    align-items: center;
-
-    ul {
-      list-style: none;
+    .list {
       display: flex;
-      padding: 0;
-      margin: 0;
+      align-items: center;
 
-      li {
-        padding: 0 12px;
-        cursor: pointer;
+      ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
 
-        &:hover {
-          font-weight: 700;
+        li {
+          padding: 0 12px;
+          cursor: pointer;
+
+          &:hover {
+            font-weight: 700;
+          }
         }
       }
     }
   }
 }
 
+@keyframes showInfo {
+  to {
+    transform: translateY(0);
+  }
+}
+
+
 @keyframes animation-gradient {
   0% {
     background-position-x: 0%;
   }
   50% {
-    background-position-x: 160%;
+    background-position-x: 100%;
   }
   100% {
     background-position-x: 0%;
   }
 }
 
-@keyframes showInfo {
-  to {
-    height: $nav-height;
-  }
+@media only all and (max-width: 760px) {
+  .nav-wrapper {
+    nav {
+      .list {
+        flex-direction: column;
+          align-items: flex-start;
+        ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+}
 }
 
-@media only all and (max-width: 600px) {
-  nav {
-    .list {
-      flex-direction: column;
-        align-items: flex-start;
-      ul {
-        flex-direction: column;
-        align-items: flex-start;
+.skills__wrapper {
+  overflow: hidden;
+
+  .skills {
+    transform: translateY(-100%);
+    animation: showSkills 2s 6s steps(13, end) forwards;
+
+    .skill {
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
+
+  @keyframes showSkills {
+    to {
+      transform: translateY(0);
+    }
+  }
 }
+
+.experience__wrapper {
+  overflow: hidden;
+
+  .experience {
+    transform: translateY(-100%);
+    animation: showExperience 2s 8s steps(13, end) forwards;
+
+    .experience__item {
+      padding-bottom: 20px;
+
+      .title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  @keyframes showExperience {
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+.education__wrapper {
+  overflow: hidden;
+
+  .education {
+    transform: translateY(-100%);
+    animation: showEducation 2s 10s steps(13, end) forwards;
+
+    .education__item {
+      padding-bottom: 20px;
+
+      .title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  @keyframes showEducation {
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+

@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #262722;
   font-family: 'Montserrat', sans-serif;
@@ -9,8 +13,21 @@ body {
   padding-left: 0;
 }
 
-.row {
-  display: flex;
+h1 {
+  margin-block-start: unset;
+  margin-block-end: unset;
+  margin-inline-start: unset;
+  margin-inline-end: unset;
+  padding: 10px 0;
+  font-size: 40px;
+  background: linear-gradient(to right, #e8cbc0, #636fa4);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animation-gradient 2s infinite;
 }
 
 .cursor {
@@ -28,11 +45,13 @@ body {
 
 .typing__name {
   overflow: hidden;
-  /* Ensures the content is not revealed until the animation */
   white-space: nowrap;
-  /* Keeps the content on a single line */
   animation: typing 3s step-end;
   padding-left: 5px;
+}
+
+.row {
+  display: flex;
 }
 
 @keyframes show {
@@ -96,22 +115,30 @@ body {
   padding: 20px 0;
 }
 
-.user-info {
-  position: relative;
-  height: 0;
+.info-wrapper {
   overflow: hidden;
-  box-sizing: border-box;
+}
+
+.info-wrapper .info-animation-box {
+  transform: translateY(-100%);
   animation: showUserBox 1s 5s steps(8, end) forwards;
 }
 
-.user-info .content {
-  width: 340px;
+.info-wrapper .info-animation-box .user-info {
+  position: relative;
   height: 140px;
-  padding: 20px;
+  overflow: hidden;
   box-sizing: border-box;
+  width: 340px;
 }
 
-.user-info .top-border {
+.info-wrapper .info-animation-box .user-info .content {
+  padding: 20px;
+  box-sizing: border-box;
+  height: 140px;
+}
+
+.info-wrapper .info-animation-box .user-info .top-border {
   position: absolute;
   top: 0;
   left: 0;
@@ -120,7 +147,7 @@ body {
   justify-content: space-between;
 }
 
-.user-info .bottom-border {
+.info-wrapper .info-animation-box .user-info .bottom-border {
   position: absolute;
   bottom: -140px;
   left: 0;
@@ -130,7 +157,7 @@ body {
   animation: showBottomBorder 1s 4s steps(19, end) forwards;
 }
 
-.user-info .left-border {
+.info-wrapper .info-animation-box .user-info .left-border {
   position: absolute;
   height: 140px;
   top: 0;
@@ -140,7 +167,7 @@ body {
   flex-direction: column;
 }
 
-.user-info .right-border {
+.info-wrapper .info-animation-box .user-info .right-border {
   position: absolute;
   height: 140px;
   top: 0;
@@ -152,7 +179,7 @@ body {
 
 @keyframes showUserBox {
   to {
-    height: 140px;
+    transform: translateY(0);
   }
 }
 
@@ -166,7 +193,11 @@ body {
   font-size: 23px;
 }
 
-nav {
+.nav-wrapper {
+  overflow: hidden;
+}
+
+.nav-wrapper nav {
   background: linear-gradient(to right, #e8cbc0, #636fa4);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -176,35 +207,43 @@ nav {
   -webkit-text-fill-color: transparent;
   font-size: 22px;
   font-weight: 500;
+  transform: translateY(-100%);
+  animation: animation-gradient 2s infinite, showInfo 1s 4s steps(19, end) forwards;
 }
 
-nav .top-border,
-nav .bottom-border {
+.nav-wrapper nav .top-border,
+.nav-wrapper nav .bottom-border {
   height: 33px;
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
 }
 
-nav .list {
+.nav-wrapper nav .list {
   display: flex;
   align-items: center;
 }
 
-nav .list ul {
+.nav-wrapper nav .list ul {
   list-style: none;
   display: flex;
   padding: 0;
   margin: 0;
 }
 
-nav .list ul li {
+.nav-wrapper nav .list ul li {
   padding: 0 12px;
   cursor: pointer;
 }
 
-nav .list ul li:hover {
+.nav-wrapper nav .list ul li:hover {
   font-weight: 700;
+}
+
+@keyframes showInfo {
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes animation-gradient {
@@ -212,26 +251,85 @@ nav .list ul li:hover {
     background-position-x: 0%;
   }
   50% {
-    background-position-x: 160%;
+    background-position-x: 100%;
   }
   100% {
     background-position-x: 0%;
   }
 }
 
-@keyframes showInfo {
-  to {
-    height: 100px;
+@media only all and (max-width: 760px) {
+  .nav-wrapper nav .list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-wrapper nav .list ul {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-@media only all and (max-width: 600px) {
-  nav .list {
-    flex-direction: column;
-    align-items: flex-start;
+.skills__wrapper {
+  overflow: hidden;
+}
+
+.skills__wrapper .skills {
+  transform: translateY(-100%);
+  animation: showSkills 2s 6s steps(13, end) forwards;
+}
+
+.skills__wrapper .skills .skill:hover {
+  text-decoration: underline;
+}
+
+@keyframes showSkills {
+  to {
+    transform: translateY(0);
   }
-  nav .list ul {
-    flex-direction: column;
-    align-items: flex-start;
+}
+
+.experience__wrapper {
+  overflow: hidden;
+}
+
+.experience__wrapper .experience {
+  transform: translateY(-100%);
+  animation: showExperience 2s 8s steps(13, end) forwards;
+}
+
+.experience__wrapper .experience .experience__item {
+  padding-bottom: 20px;
+}
+
+.experience__wrapper .experience .experience__item .title {
+  font-size: 20px;
+}
+
+@keyframes showExperience {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.education__wrapper {
+  overflow: hidden;
+}
+
+.education__wrapper .education {
+  transform: translateY(-100%);
+  animation: showEducation 2s 10s steps(13, end) forwards;
+}
+
+.education__wrapper .education .education__item {
+  padding-bottom: 20px;
+}
+
+.education__wrapper .education .education__item .title {
+  font-size: 20px;
+}
+
+@keyframes showEducation {
+  to {
+    transform: translateY(0);
   }
 }
